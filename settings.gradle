@@ -1,0 +1,7 @@
+include ':app'
+include ':advancedrecyclerview'
+project(':advancedrecyclerview').projectDir = new File('../advancedrecyclerview/library')
+include ':XRecyclerView'
+project(':XRecyclerView').projectDir = new File('../XRecyclerView/xrecyclerview')
+include(':album')
+project(':album').projectDir = new File('../Album/album')

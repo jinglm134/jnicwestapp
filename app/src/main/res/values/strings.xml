@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">必赢体育一世界杯</string>
+
+    <string-array name="boards">
+        <item>射手榜</item>
+        <item>助攻榜 </item>
+    </string-array>
+
+    <string-array name="boards_value">
+        <item>goals</item>
+        <item>assits</item>
+    </string-array>
+
+
+    <string-array name="team">
+        <item>英超</item>
+        <item>西甲</item>
+        <item>德甲</item>
+        <item>法甲</item>
+        <item>意甲</item>
+        <item>欧冠</item>
+    </string-array>
+
+    <string-array name="team_value">
+        <item>epl</item>
+        <item>liga</item>
+        <item>bund</item>
+        <item>fran</item>
+        <item>seri</item>
+        <item>chlg</item>
+    </string-array>
+</resources>
