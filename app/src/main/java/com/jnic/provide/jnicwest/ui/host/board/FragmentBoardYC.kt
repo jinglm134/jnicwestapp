@@ -1,5 +1,6 @@
 package com.jnic.provide.jnicwest.ui.host.board
 
+import android.animation.ObjectAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.TextView
@@ -15,25 +16,33 @@ import com.jnic.provide.jnicwest.net.BaseCallback
 import com.jnic.provide.jnicwest.net.WebList
 import com.jnic.provide.jnicwest.util.GsonUtils
 import com.jnic.provide.jnicwest.view.DividerLinearItemDecoration
+import com.jnic.provide.jnicwest.view.SpinnerPopup
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.fragment_board_yc.*
 
+@Suppress("CAST_NEVER_SUCCEEDS")
 /**
  * Created by ${jaylm}
  * on 2018/1/16.
  */
 class FragmentBoardYC : BaseFragment(), View.OnClickListener {
 
+    private lateinit var spinnerPopup: SpinnerPopup
     private var mTabData = ArrayList<BoardTypeBean.ContentBean.DataBean>()
     private var mData = ArrayList<BoardDataBean.ContentBean.DataBean>()
     private var mUrl = ""
 
     private lateinit var mTabAdapter: AdapterBoardTab
     private lateinit var mAdapter: AdapterBoard
-    private var season_id = 9235
     private var type = "person"
     private var type_int = 1
     private var mViewP = ArrayList<TextView>()
+
+    private var mTeamName = emptyArray<String>()
+    private var mTeamValue = ArrayList<Int>()
+    private var mTeam: Int = 9235
+    private var mDegrees: Float = 0F
+
     override fun bindLayout(): Int {
         return R.layout.fragment_board_yc
     }
@@ -42,9 +51,31 @@ class FragmentBoardYC : BaseFragment(), View.OnClickListener {
         super.initView()
 
 //        season_id = arguments!!.getInt("season_id")
-
+        initData()
         initTextView()
         initRecyclerView()
+    }
+
+    fun initData() {
+        mTeamName = mActivity.resources.getStringArray(R.array.team)
+//        英超：9235；
+//        西甲：9234；
+//        意甲：9298；
+//        德甲：9236；
+//        欧冠：9273；
+//        法甲：9268；
+//        中超：9100；
+        mTeamValue.add(9235)
+        mTeamValue.add(9234)
+        mTeamValue.add(9298)
+        mTeamValue.add(9236)
+        mTeamValue.add(9273)
+        mTeamValue.add(9268)
+        mTeamValue.add(9100)
+        mTeam = mTeamValue[0]
+
+        spinnerPopup = SpinnerPopup(mActivity)
+        spinnerPopup.addListAction(mTeamName.asList())
     }
 
     fun initTextView() {
@@ -74,29 +105,42 @@ class FragmentBoardYC : BaseFragment(), View.OnClickListener {
         super.setListener()
         tv_person.setOnClickListener(this)
         tv_team.setOnClickListener(this)
+        view_race.setOnClickListener(this)
 
         mTabAdapter.setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener<BoardTypeBean.ContentBean.DataBean> {
             override fun onItemClick(data: BoardTypeBean.ContentBean.DataBean, position: Int) {
                 mUrl = data.url
                 loadData()
+                mTabAdapter.notifyDataSetChanged()
             }
 
         })
+
+        spinnerPopup.setOnDismissListener {
+            setRotateAnimal(iv_race)
+        }
+
+        spinnerPopup.setOnItemClickListener {
+            position ->
+            tv_race.text = mTeamName[position]
+            mTeam = mTeamValue[position]
+            teamPerson()
+        }
     }
 
 
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.tv_person -> {
-                type = "person"
-                type_int = 1
-                loadTabData()
-
+                teamPerson()
             }
             R.id.tv_team -> {
-                type = "team"
-                type_int = 2
-                loadTabData()
+                teamPerson(false)
+            }
+
+            R.id.view_race -> {
+                spinnerPopup.showBottom(v)
+                setRotateAnimal(iv_race)
             }
         }
     }
@@ -106,8 +150,8 @@ class FragmentBoardYC : BaseFragment(), View.OnClickListener {
         loadTabData()
     }
 
-    fun loadTabData() {
-        val url = API.BOARD + "&season_id=" + season_id + "&type=" + type
+    fun loadTabData(isRefresh: Boolean = false) {
+        val url = API.BOARD + "&season_id=" + mTeam + "&type=" + type
         WebList.base(url, object : BaseCallback(mActivity) {
             override fun onSuccess(response: Response<String>) {
                 val data = GsonUtils.parseJsonWithGson(response.body(), BoardTypeBean::class.java)
@@ -115,7 +159,11 @@ class FragmentBoardYC : BaseFragment(), View.OnClickListener {
                 mTabData.addAll(data.content.data)
                 mUrl = mTabData[0].url
                 loadData()
-                mTabAdapter.resetAdapter(mTabData)
+                if (isRefresh) {
+                    mTabAdapter.resetAdapter(mTabData, 0)
+                } else {
+                    mTabAdapter.resetAdapter(mTabData)
+                }
             }
 
 
@@ -139,5 +187,34 @@ class FragmentBoardYC : BaseFragment(), View.OnClickListener {
             }
 
         })
+    }
+
+
+    fun teamPerson(isPerson: Boolean = true) {
+        if (isPerson) {
+            type = "person"
+            type_int = 1
+            tv_person.setTextColor(mActivity.resources.getColor(R.color.c14))
+            tv_team.setTextColor(mActivity.resources.getColor(R.color.c2))
+            tv_person.setBackgroundResource(R.drawable.shape_bd_c2_bg_c2)
+            tv_team.setBackgroundResource(R.drawable.shape_bd_c2_bg_c14)
+        } else {
+            type = "team"
+            type_int = 2
+            tv_person.setTextColor(mActivity.resources.getColor(R.color.c2))
+            tv_team.setTextColor(mActivity.resources.getColor(R.color.c14))
+            tv_person.setBackgroundResource(R.drawable.shape_bd_c2_bg_c14)
+            tv_team.setBackgroundResource(R.drawable.shape_bd_c2_bg_c2)
+        }
+        loadTabData(true)
+    }
+
+    /**
+     * 设置旋转动画
+     * @param view :旋转的view
+     */
+    private fun setRotateAnimal(view: View): Unit {
+        ObjectAnimator.ofFloat(view, "rotation", mDegrees, mDegrees + 180).setDuration(300).start()
+        mDegrees += 180
     }
 }

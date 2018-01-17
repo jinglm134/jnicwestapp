@@ -46,6 +46,7 @@ class AdapterBoard(private val mContext: Context, datas: ArrayList<BoardDataBean
     fun resetAdapter(datas: ArrayList<BoardDataBean.ContentBean.DataBean>, type: Int) {
         this.mDatas = datas
         mType = type
+        initLayout()
         notifyDataSetChanged()
     }
 

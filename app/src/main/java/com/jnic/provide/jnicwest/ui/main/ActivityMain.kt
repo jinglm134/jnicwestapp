@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.jnic.provide.jnicwest.R
 import com.jnic.provide.jnicwest.base.BaseActivity
-import com.jnic.provide.jnicwest.ui.host.board.FragmentBoard
 import com.jnic.provide.jnicwest.ui.host.board.FragmentBoardYC
 import com.jnic.provide.jnicwest.ui.host.info.FragmentInfo
+import com.jnic.provide.jnicwest.ui.host.jiao.FragmentJiaoQiu
 import com.jnic.provide.jnicwest.ui.host.news.FragmentNews
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -21,8 +21,8 @@ import java.util.*
 class ActivityMain : BaseActivity() {
     private lateinit var fragments: MutableList<Class<out Fragment>>
 
-    private val TAB_TITLE = arrayOf("新闻", "视频", "个人")
-    private val TAB_ICON = intArrayOf(R.mipmap.icon_host, R.mipmap.icon_shequ, R.mipmap.icon_personal)
+    private val TAB_TITLE = arrayOf("新闻", "数据", "榜单", "角球")
+    private val TAB_ICON = intArrayOf(R.mipmap.icon_news, R.mipmap.icon_data, R.mipmap.icon_board,R.mipmap.icon_ball)
 
     override fun bindLayout(): Int {
         return R.layout.activity_main
@@ -37,6 +37,7 @@ class ActivityMain : BaseActivity() {
         fragments.add(FragmentNews::class.java)
         fragments.add(FragmentInfo::class.java)
         fragments.add(FragmentBoardYC::class.java)
+        fragments.add(FragmentJiaoQiu::class.java)
 
         tabHost.setup(mActivity, supportFragmentManager, R.id.frameLayout)
         tabHost.tabWidget.dividerDrawable = null

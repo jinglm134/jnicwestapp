@@ -15,6 +15,7 @@ abstract class BaseRecyclerAdapter<T>(var mContext: Context, @LayoutRes private 
 
     private var mListener: OnItemClickListener<T>? = null
     protected var mDatas: ArrayList<T>
+    protected var onSelectedPosition: Int = 0
 
     init {
         if (datas == null) {
@@ -32,7 +33,7 @@ abstract class BaseRecyclerAdapter<T>(var mContext: Context, @LayoutRes private 
 
     override fun onBindViewHolder(holder: BaseRecyclerHolder?, position: Int) {
         holder!!.getConvertView().tag = position
-        convert(holder, mDatas[position])
+        convert(holder, mDatas[position], position)
     }
 
     override fun onBindViewHolder(holder: BaseRecyclerHolder?, position: Int, payloads: MutableList<Any>?) {
@@ -52,20 +53,24 @@ abstract class BaseRecyclerAdapter<T>(var mContext: Context, @LayoutRes private 
         return mDatas.size
     }
 
-    fun resetAdapter(datas: List<T>) {
+    open fun resetAdapter(datas: List<T>) {
         mDatas = datas as ArrayList<T>
         notifyDataSetChanged()
     }
 
     abstract fun convert(holder: BaseRecyclerHolder, t: T)
+    open fun convert(holder: BaseRecyclerHolder, t: T, index: Int) {
+        convert(holder, t)
+    }
+
     /*when item changed must be override*/
     open fun convertItemChange(holder: BaseRecyclerHolder, t: T, payloads: MutableList<Any>) {}
 
 
     override fun onClick(p0: View) {
+        onSelectedPosition = p0.tag as Int
         if (mListener != null) {
-            val position = p0.tag as Int
-            mListener!!.onItemClick(mDatas[position], position)
+            mListener!!.onItemClick(mDatas[onSelectedPosition], onSelectedPosition)
         }
     }
 

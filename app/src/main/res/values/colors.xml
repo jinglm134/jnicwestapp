@@ -52,4 +52,6 @@
     <color name="tab_unselected">#f0f0f0</color>
     <color name="snackbar_bg">#e0aaaaaa</color>
     <color name="full_transparent">#00ffffff</color>
+
+
 </resources>
