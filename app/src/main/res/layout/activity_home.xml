@@ -28,7 +28,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
         android:background="@color/c15" />
 
     <LinearLayout
@@ -49,13 +48,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/iv_icon1"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_horizontal"
                     android:tint="@color/c2" />
 
@@ -65,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/c2"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="主页" />
             </LinearLayout>
         </RelativeLayout>
@@ -84,13 +83,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/iv_icon2"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
@@ -99,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/c6"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="后退" />
             </LinearLayout>
         </RelativeLayout>
@@ -117,13 +116,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/iv_icon3"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
@@ -132,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/c6"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="客服" />
             </LinearLayout>
         </RelativeLayout>
@@ -150,13 +149,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/iv_icon4"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
@@ -165,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/c6"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="快充" />
             </LinearLayout>
         </RelativeLayout>
@@ -183,13 +182,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/iv_icon5"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
@@ -198,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/c6"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:text="刷新" />
             </LinearLayout>
         </RelativeLayout>

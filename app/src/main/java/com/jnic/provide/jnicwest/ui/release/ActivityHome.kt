@@ -55,7 +55,7 @@ class ActivityHome : BaseActivity() {
 
     override fun initView(contentView: View) {
         super.initView(contentView)
-
+        hideHeader()
 
         lists_img.add(iv_icon1)
         lists_img.add(iv_icon3)
