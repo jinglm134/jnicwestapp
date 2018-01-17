@@ -18,7 +18,6 @@ import java.util.logging.Level
  */
 class BaseApplication : Application() {
 
-    private var isLogin: Boolean = false
 
     override fun onCreate() {
         super.onCreate()

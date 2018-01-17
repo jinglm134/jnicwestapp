@@ -9,19 +9,18 @@
 
     <ImageView
         android:id="@+id/iv_back"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
         android:padding="15dp"
         android:src="@mipmap/icon_back" />
 
     <TextView
         android:id="@+id/tv_title"
-        tools:text="新闻详情"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/c14"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="新闻详情" />
 </RelativeLayout>

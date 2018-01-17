@@ -56,6 +56,17 @@
             android:name=".ui.release.ActivityHome"
             android:launchMode="singleTop" />
 
+        <activity
+            android:name=".ui.main.ActivityMain"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".ui.main.ActivityWebView"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.host.info.ActivityInfo"
+            android:launchMode="singleTop" />
+
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service

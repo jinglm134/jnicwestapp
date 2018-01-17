@@ -23,6 +23,7 @@ import com.jnic.provide.jnicwest.constant.RequestConfig
 import com.jnic.provide.jnicwest.util.permission.MPermission
 import com.jnic.provide.jnicwest.util.permission.annotation.OnMPermissionNeverAskAgain
 import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.layout_title.*
 import java.util.*
 
 
@@ -34,9 +35,9 @@ abstract class BaseActivity : AppCompatActivity(), OnClickListener {
     /**activity**/
     lateinit var mActivity: BaseActivity
     /** 是否沉浸状态栏 **/
-    private val isSetStatusBar = true
+    private val isSetStatusBar = false
     /** 是否允许全屏 **/
-    private val mAllowFullScreen = true
+    private val mAllowFullScreen = false
     /** 是否禁止旋转屏幕 **/
     open var isAllowScreenRotate = false
     /** 当前Activity渲染的视图View **/
@@ -71,7 +72,6 @@ abstract class BaseActivity : AppCompatActivity(), OnClickListener {
 
         setContentView(R.layout.activity_base)
         mContentView = LayoutInflater.from(mActivity).inflate(bindLayout(), fl_content, true)
-        view_shade.setOnClickListener(this)
 
 //        LayoutInflater.from(this).inflate(bindLayout(), parentLinearLayout, true)
         // 将activity推入栈中
@@ -94,8 +94,19 @@ abstract class BaseActivity : AppCompatActivity(), OnClickListener {
     protected abstract fun bindLayout(): Int
     open protected fun initParams(params: Bundle?) {}
     open protected fun initView(contentView: View) {}
-    open protected fun setListener() {}
+    open protected fun setListener() {
+        iv_back.setOnClickListener(this)
+        view_shade.setOnClickListener(this)
+    }
+
     open protected fun setValue() {}
+    protected fun setHeader(header: String) {
+        tv_title.text = header
+    }
+
+    protected fun hideHeader() {
+        layout_title.visibility = View.GONE
+    }
 
 
     /**
@@ -227,10 +238,15 @@ abstract class BaseActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        if (p0!!.id == R.id.view_shade) {
-            view_shade.visibility = View.GONE
+        if (p0 == null) {
+            return
+        }
+        when (p0.id) {
+            R.id.iv_back -> finish()
+            R.id.view_shade -> view_shade.visibility = View.GONE
         }
     }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         MPermission.onRequestPermissionsResult(mActivity, requestCode, permissions, grantResults)

@@ -39,7 +39,7 @@ object SnackbarUtils {
      */
     fun showSnackbar(parent: View, text: CharSequence, @ColorRes textColor: Int = R.color.c2,
                      @ColorRes bgColor: Int = R.color.snackbar_bg, actionText: CharSequence = "",
-                     @ColorRes actionTextColor: Int = R.color.c2, listener: View.OnClickListener? = null,
+                     @ColorRes actionTextColor: Int = R.color.colorPrimaryDark, listener: View.OnClickListener? = null,
                      duration: Int = Snackbar.LENGTH_SHORT) {
 
         snackbarWeakReference = WeakReference(Snackbar.make(parent, text, duration))

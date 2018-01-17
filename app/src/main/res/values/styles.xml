@@ -31,7 +31,7 @@
     </style>
 
     <style name="TabLayoutTextStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
     <!-- popup进出动画  从下边界进出的动画-->
     <style name="mypopwindow_anim_style">

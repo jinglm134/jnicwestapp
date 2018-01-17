@@ -15,7 +15,6 @@ import com.jnic.provide.jnicwest.R
 import com.jnic.provide.jnicwest.base.BaseFragment
 import com.jnic.provide.jnicwest.view.ProgressDialog
 import kotlinx.android.synthetic.main.activity_webview.*
-import kotlinx.android.synthetic.main.layout_title.*
 import org.jetbrains.anko.backgroundColor
 
 /**
@@ -33,7 +32,6 @@ class FragmentWebView : BaseFragment() {
     override fun initView() {
         super.initView()
         val mUrl = arguments!!.getString("url", "")
-        rl_title.visibility = View.GONE
         mProgress = ProgressDialog(mActivity, "网页加载中...")
         pb_web.visibility = View.GONE
 //        mDialog = new ProgressDialog(getActivity(), "网页加载中...");

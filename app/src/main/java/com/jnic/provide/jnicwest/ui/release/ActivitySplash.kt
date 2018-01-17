@@ -8,6 +8,7 @@ import com.jnic.provide.jnicwest.bean.APIServiceBean
 import com.jnic.provide.jnicwest.net.BaseCallback
 import com.jnic.provide.jnicwest.net.WebList
 import com.jnic.provide.jnicwest.tools.UIHelper
+import com.jnic.provide.jnicwest.ui.main.ActivityMain
 import com.jnic.provide.jnicwest.util.GsonUtils
 import com.jnic.provide.jnicwest.util.StringUtils
 
@@ -24,6 +25,8 @@ class ActivitySplash : BaseActivity() {
 
     override fun initView(contentView: View) {
         super.initView(contentView)
+        hideHeader()
+
         val channel = UIHelper.getAppMetaData(mActivity, "UMENG_CHANNEL")
         var appId = 201711212115L
         when (channel) {
@@ -49,7 +52,7 @@ class ActivitySplash : BaseActivity() {
                     bundle.putSerializable("data", data)
                     startActivity(ActivityHome::class.java, bundle)
                 } else {
-//                    startActivity(Intent(this@ActivitySplash, ActivityMain::class.java))
+                    startActivity(ActivityMain::class.java)
                 }
                 finish()
             }
@@ -59,7 +62,7 @@ class ActivitySplash : BaseActivity() {
                 if (mActivity.isFinishing) {
                     return
                 }
-//                startActivity(Intent(this@ActivitySplash, ActivityMain::class.java))
+                startActivity(ActivityMain::class.java)
             }
         })
     }

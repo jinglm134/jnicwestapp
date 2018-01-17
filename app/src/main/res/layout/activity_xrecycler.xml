@@ -4,9 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/xRecyclerView"
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/xRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/view_nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:drawableTop="@mipmap/icon_no_data"
+            android:text="暂无数据"
+            android:textColor="@color/c6"
+            android:textSize="14dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
 </LinearLayout>

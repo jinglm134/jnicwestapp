@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/c10"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_quanbu"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bd_c2_bg_c2"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/c14"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_zhu"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bd_c2_bg_c14"
+            android:gravity="center"
+            android:text="主场"
+            android:textColor="@color/c2"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_ke"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bd_c2_bg_c14"
+            android:gravity="center"
+            android:text="客场"
+            android:textColor="@color/c2"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>
