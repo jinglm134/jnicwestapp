@@ -22,7 +22,7 @@ class ActivityMain : BaseActivity() {
     private lateinit var fragments: MutableList<Class<out Fragment>>
 
     private val TAB_TITLE = arrayOf("新闻", "数据", "榜单", "角球")
-    private val TAB_ICON = intArrayOf(R.mipmap.icon_news, R.mipmap.icon_data, R.mipmap.icon_board,R.mipmap.icon_ball)
+    private val TAB_ICON = intArrayOf(R.mipmap.icon_news, R.mipmap.icon_data, R.mipmap.icon_board, R.mipmap.icon_ball)
 
     override fun bindLayout(): Int {
         return R.layout.activity_main
