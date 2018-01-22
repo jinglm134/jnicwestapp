@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jnic.provide.jnicwest">
+    package="com.jnic.provide.football">
 
     <!-- Required -->
     <permission
-        android:name="com.jnic.provide.jnicwest.permission.JPUSH_MESSAGE"
+        android:name="com.jnic.provide.football.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <!-- Required -->
-    <uses-permission android:name="com.jnic.provide.jnicwest.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.jnic.provide.football.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -34,7 +34,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".application.BaseApplication"
+        android:name="com.jnic.provide.football.application.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -44,7 +44,7 @@
             android:name="UMENG_CHANNEL"
             android:value="" />
 
-        <activity android:name=".ui.release.ActivitySplash">
+        <activity android:name="com.jnic.provide.football.ui.release.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,18 +53,21 @@
         </activity>
 
         <activity
-            android:name=".ui.release.ActivityHome"
+            android:name="com.jnic.provide.football.ui.release.ActivityHome"
             android:launchMode="singleTop" />
 
         <activity
-            android:name=".ui.main.ActivityMain"
+            android:name="com.jnic.provide.football.ui.main.ActivityMain"
             android:launchMode="singleTop" />
 
         <activity
-            android:name=".ui.main.ActivityWebView"
+            android:name="com.jnic.provide.football.ui.main.ActivityWebView"
             android:launchMode="singleTop" />
         <activity
-            android:name=".ui.host.info.ActivityInfo"
+            android:name="com.jnic.provide.football.ui.host.info.ActivityInfo"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.jnic.provide.football.ui.host.board.ActivityTeamInfo"
             android:launchMode="singleTop" />
 
         <!-- Required SDK 核心功能-->
@@ -85,7 +88,7 @@
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="com.jnic.provide.jnicwest.DataProvider"
+            android:authorities="com.jnic.provide.football.DataProvider"
             android:exported="true" />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
@@ -96,7 +99,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
         </service>
 
@@ -106,7 +109,7 @@
             android:enabled="true">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -131,7 +134,7 @@
                 <action android:name="cn.jpush.android.ui.PushActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
         </activity>
         <!-- SDK核心功能-->
@@ -142,7 +145,7 @@
             android:theme="@style/MyDialogStyle">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
         </activity>
 
@@ -159,17 +162,17 @@
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
         <receiver
-            android:name="com.jnic.provide.jnicwest.jpush.MyJPushMessageReceiver"
+            android:name="com.jnic.provide.football.jpush.MyJPushMessageReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
         <receiver
-            android:name="com.jnic.provide.jnicwest.jpush.MyReceiver"
+            android:name="com.jnic.provide.football.jpush.MyReceiver"
             android:enabled="true">
             <intent-filter>
                 <!--Required 用户注册SDK的intent-->
@@ -182,7 +185,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
-                <category android:name="com.jnic.provide.jnicwest" />
+                <category android:name="com.jnic.provide.football" />
             </intent-filter>
         </receiver>
 
@@ -197,7 +200,7 @@
         <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
-            android:value="e96e0ef94a44fa5309962d5e" />
+            android:value="f96d0b82aa27888a163caac5" />
     </application>
 
 

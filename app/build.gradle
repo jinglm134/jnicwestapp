@@ -6,7 +6,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.jnic.provide.jnicwest"
+        applicationId "com.jnic.provide.football"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
@@ -21,7 +21,7 @@ android {
 
         manifestPlaceholders = [
                 JPUSH_PKGNAME: applicationId,
-                JPUSH_APPKEY : "e96e0ef94a44fa5309962d5e", //JPush上注册的包名对应的appkey.//金宝博体育网投助手
+                JPUSH_APPKEY : "f96d0b82aa27888a163caac5", //JPush上注册的包名对应的appkey.//金宝博体育网投助手
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
